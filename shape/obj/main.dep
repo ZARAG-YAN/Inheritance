@@ -1,2 +1,0 @@
-obj/main.dep obj/main.o: src/main.cpp inc/shape.hpp inc/rectangle.hpp \
- inc/shape.hpp inc/circle.hpp

@@ -1,2 +1,0 @@
-obj/rectangle.dep obj/rectangle.o: src/rectangle.cpp inc/rectangle.hpp \
- inc/shape.hpp

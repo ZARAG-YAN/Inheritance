@@ -1,1 +1,0 @@
-obj/shape.dep obj/shape.o: src/shape.cpp inc/shape.hpp

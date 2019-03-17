@@ -1,1 +1,0 @@
-obj/circle.dep obj/circle.o: src/circle.cpp inc/circle.hpp inc/shape.hpp
