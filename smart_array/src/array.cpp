@@ -123,17 +123,33 @@ void array::shift(int p, int c, int d)
             arr[i] = arr[i - c];
         }
     } else if (0 == d) {
+	arr[p -1] = 0;
         for (int i = p; i < size - 1; ++i) {
-            arr[i] = arr[i + c];
+            arr[i] = arr[i -1];
         }
     }
 }
 
+int array::array_size()const
+{
+    return size;
+}
+
+void array::empty()const
+{
+   if( size == 0) {
+       std::cout <<"TRUE\n";
+   } else {
+       std::cout <<"FALSE\n";
+   }
+}
+
 void array::insert(int p, int c)
 {
-    resize(size + c);
+    resize(size + c -1);
     shift(p, c, 0);
-    for (int i = p; i < p + c; ++i) {
+    std::cout <<"Insert your " << c <<" number\n";
+    for (int i = p; i < p + c ; ++i) {
         std::cin >> arr[i];
     }
 }

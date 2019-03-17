@@ -28,8 +28,11 @@ public:
 
 	array& operator= (const array& p);
 	bool operator== (array i);
-
+        
+        int array_size()const;
         void resize(int i);
+	
+	void empty()const;
 
 	void insert(int p, int c = 1);
 	void erase(int p, int c);
