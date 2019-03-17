@@ -1,0 +1,2 @@
+obj/employee.dep obj/employee.o: src/employee.cpp inc/employee.hpp \
+ inc/person.hpp

@@ -34,15 +34,13 @@ class person
         void setPhone(std::string phone);
         void setAddres(std::string add);
 
-        std::string getName() const { return this-> m_name; }
-        std::string getSurname() const { return this-> m_surname; }
-        std::string getOccupation() const { return this -> m_occup; }
-        int getAge() const { return this-> m_age; }
-        int getID() const { return this-> m_ID; }
-        std::string getPhone() const { return this-> m_phone; }
-        std::string getAddres() const { return this-> m_addres; }
+        std::string getName() const { return m_name; }
+        std::string getSurname() const { return m_surname; }
+        std::string getOccupation() const { return m_occup; }
+        int getAge() const { return m_age; }
+        int getID() const { return m_ID; }
+        std::string getPhone() const { return m_phone; }
+        std::string getAddres() const { return m_addres; }
         virtual void get_info() = 0;
-        void display(void) { this-> get_info();}
-
 };
 #endif //PERSON_H

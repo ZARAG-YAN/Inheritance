@@ -36,15 +36,3 @@ void  person::setAddres(std::string addres)
      m_addres = addres;
 }
 
-/*void person::get_info()
-{   
-    std::cout << "\n*** Person ***\n";
-    std::cout << "\nName:       "<< m_name;
-    std::cout << "\nSurname:    "<< m_surname;
-    std::cout << "\nOccupation: "<< m_occup;
-    std::cout << "\nID:         "<< m_ID;
-    std::cout << "\nAge:        "<< m_age;
-    std::cout << "\nPhone:      "<< m_phone ;
-    std::cout << "\nAddres:     "<< m_addres << std::endl << std::endl;
-
-}*/

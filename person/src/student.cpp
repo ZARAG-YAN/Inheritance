@@ -10,8 +10,6 @@ student::student(std::string n, std::string s, int a, int id, std::string u, std
         {
         }
 
-
-
 void student::setUniversity(std::string u)
 {
      m_university = u;

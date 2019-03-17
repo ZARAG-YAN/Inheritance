@@ -16,7 +16,6 @@ class student : public person
     public:
         student(){}
         student(std::string n, std::string s , int a, int id, std::string u, std::string f, int c);
-        ~student(){ std::cout <<"\nDestructor student.\n"; }
         
         void setUniversity(std::string u);
         void setFaculty(std::string f);
@@ -24,12 +23,12 @@ class student : public person
         void setGroup(int g);
         void setCourse(int c);
 
-        std::string getUniversity() const { return this-> m_university; }
-        std::string getFaculty() const { return this-> m_faculty; }
-        std::string getDegree() const { return this-> m_degree; }
-        int getGroup() const { return this-> m_group; }
-        int getCourse() const { return this-> m_course; }
-        void get_info();
+        std::string getUniversity() const { return m_university; }
+        std::string getFaculty() const { return m_faculty; }
+        std::string getDegree() const { return m_degree; }
+        int getGroup() const { return m_group; }
+        int getCourse() const { return m_course; }
+        virtual void get_info();
 
 };
 #endif //STUDENT_H
