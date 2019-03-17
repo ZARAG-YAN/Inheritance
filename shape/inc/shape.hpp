@@ -16,8 +16,8 @@ class shape
         void set_name(std::string name);
         void set_color(std::string color);
 
-        std::string get_name();
-        std::string get_color();
+        std::string get_name()const;
+        std::string get_color()const;
 
         virtual double get_area() = 0;
         

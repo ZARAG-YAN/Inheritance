@@ -17,8 +17,8 @@ class rectangle: public shape
         void set_widht(double widht);
         void set_height(double height);
 
-        double get_widht();
-        double get_height();
+        double get_widht()const;
+        double get_height()const;
 
         virtual double get_area();
 };

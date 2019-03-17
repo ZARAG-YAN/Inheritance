@@ -24,11 +24,11 @@ void rectangle::set_height(double height)
 	m_height = height;
 }
 
-double rectangle::get_widht()
+double rectangle::get_widht() const
 {
 	return m_widht;
 }
-double rectangle::get_height()
+double rectangle::get_height()const
 {
 	return m_height;
 }

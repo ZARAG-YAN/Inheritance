@@ -16,12 +16,12 @@ void shape::set_color(std::string color)
     m_color = color;
 }
         
-std::string shape::get_name()
+std::string shape::get_name() const
 {
 	return m_name;
 }
 
-std::string shape::get_color()
+std::string shape::get_color() const
 {
 	return m_color;
 }

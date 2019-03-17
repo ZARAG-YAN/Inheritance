@@ -17,7 +17,7 @@ void circle::set_radius(double radius)
 	m_radius = radius;
 }
 
-double circle::get_radius()
+double circle::get_radius()const
 {
 	return m_radius;
 }

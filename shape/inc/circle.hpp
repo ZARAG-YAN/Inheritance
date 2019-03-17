@@ -16,7 +16,7 @@ class circle: public shape
 
         void set_radius(double radius);
 
-        double get_radius();
+        double get_radius()const;
 
         double get_area();
 };
