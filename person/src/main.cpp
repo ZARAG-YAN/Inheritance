@@ -3,15 +3,16 @@
 #include "student.hpp"
 
 int main ()
-{  
-    person* theArray[2];
-    theArray[0] = new student("Zarine","Grigoryan", 23, 48, "YSU", "IKM", 0);
-    theArray[1] = new employee("Anna", "Asatryan", 18, 48,"Instigate", "QA", 2019);
-   
-    std::cout << "Student.\n";
-    std::cout << theArray[0]->get_info()
-    std::cout << "Employee.\n";
-    std::cout << theArray[1]->get_info();
+{
+//Please input student name, surname, age, id, university, faculty and course. 
+// the other attributes please set withe set methods.
+//Please input employee's name, surname, age, id, work in the company ,profession and year.
+    std::cout <<"\t*** Welcome persons world! ***\n";
+    person* ptr[2] ;
+    ptr[0] = new student("Zarine","Grigoryan", 23, 48, "YSU", "IKM", 5,"Bachelor's", 408);
+    ptr[1] = new employee("Anna", "Asatryan", 18, 48,"Instigate", "QA", 2019);
+    ptr[0]->get_info();
+    ptr[1]->get_info();
 
     return 0;
 }

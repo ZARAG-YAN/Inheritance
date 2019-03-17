@@ -2,11 +2,13 @@
 #include <iostream>
 #include <cstring>
 
-student::student(std::string n, std::string s, int a, int id, std::string u, std::string f, int c)
+student::student(std::string n, std::string s, int a, int id, std::string u, std::string f, int c, std::string d, int g)
         : person(n, s, a, id)
         , m_university(u)
         , m_faculty(f)
         , m_course(c)
+        , m_degree(d)
+        , m_group(g)
         {
         }
 

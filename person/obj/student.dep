@@ -1,2 +1,0 @@
-obj/student.dep obj/student.o: src/student.cpp inc/student.hpp \
- inc/person.hpp

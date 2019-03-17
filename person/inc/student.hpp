@@ -9,13 +9,13 @@ class student : public person
     private:
         std::string m_university;
         std::string m_faculty;
+        int m_course;
         std::string m_degree;
         int m_group;
-        int m_course;
 
     public:
         student(){}
-        student(std::string n, std::string s , int a, int id, std::string u, std::string f, int c);
+        student(std::string n, std::string s , int a, int id, std::string u, std::string f, int c, std::string d, int g);
         
         void setUniversity(std::string u);
         void setFaculty(std::string f);
