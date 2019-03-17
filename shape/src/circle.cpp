@@ -22,9 +22,10 @@ double circle::get_radius()
 	return m_radius;
 }
 
-double get_area()
+double circle::get_area()
 {
-	std::cout<<"Circle "<< m_name << "\nRadius = "<<m_radius;
-	std::cout<<"\nCircle area is ";
+	std::cout <<"\n\tCircle "<< m_name <<", color "<< m_color;
+	std::cout <<"\nRadius = "<<m_radius;
+	std::cout <<"\nCircle area is ";
 	return double(PI * ( m_radius * m_radius ));
 }

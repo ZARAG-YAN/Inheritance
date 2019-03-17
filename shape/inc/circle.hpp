@@ -11,6 +11,7 @@ class circle: public shape
         double m_radius;
         
     public:
+        circle(){ m_radius = 1;}
         circle(double radius, std::string name, std::string color);
 
         void set_radius(double radius);

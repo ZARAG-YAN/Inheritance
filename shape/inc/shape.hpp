@@ -10,6 +10,7 @@ class shape
         std::string m_color;
 
     public:
+        shape(){ m_name = "A"; m_color = "white";}
         shape(std::string name, std::string color);
 
         void set_name(std::string name);

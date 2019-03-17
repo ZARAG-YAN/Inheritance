@@ -2,16 +2,16 @@
 #include "rectangle.hpp"
 #include <cstring>
 
-rectangle::rectangle(double widht, double height, std::string name, std::string color)
-:shape(name, color)
+rectangle::rectangle(double w, double h, std::string n, std::string c)
+:shape(n, c)
 {
-    if (widht <= 0) {
+    if (w <= 0) {
 	std::cout <<"Your input is wrong\n";
-    } else if (height <= 0 ) {
+    } else if (h <= 0 ) {
 	std::cout <<"Your input is wrong\n";
     } else {
-	m_widht = widht;
-	m_height = height;
+	m_widht = w;
+	m_height = h;
     }
 }
 
@@ -35,5 +35,8 @@ double rectangle::get_height()
 
 double rectangle::get_area()
 {
+	std::cout <<"\n\tRectangel "<< m_name <<", color "<< m_color;
+	std::cout <<"\nWidht = "<< m_widht << "\nHeight = "<< m_height;
+	std::cout <<"\nRectangle area is ";
 	return m_widht * m_height;
 }

@@ -11,7 +11,8 @@ class rectangle: public shape
         double m_height;
 
     public:
-        rectangle(double widht, double height, std::string name, std::string color);
+        rectangle(){ m_widht = 1; m_height = 1;}
+        rectangle(double w, double h, std::string n, std::string c);
 
         void set_widht(double widht);
         void set_height(double height);
