@@ -1,6 +1,6 @@
 #include "array.hpp"
 #include <cstring>
-
+#include <math.h>
 array::array(int n, int v)
  : arr(nullptr)
  , size(0)
@@ -38,31 +38,6 @@ void array::print_array() const
 	std::cout << std::endl;
 }
 
-void array::resize(int i)
-{
-    if (i < 0) {
-        std::cout << "Index is out of range" << std::endl;
-	    return;
-    }
-    int *new_arr = new int[i];
-    if (i >= size) {
-	    for (int j = size; j < i; j++) {
-		    new_arr[j] = 0;
-	    }
-	    for(int j = 0; j < size; j++) {
-		    new_arr[j] = arr[j];
-	    }
-    }
-    else {
-	    for(int j = 0; j < i; j++) {
-		    new_arr[j] = arr[j];
-	    }
-    }
-    size = i;
-    delete [] arr;
-    arr = new_arr;
-
-}
 
 int& array::operator[](int i)
 {
@@ -105,6 +80,32 @@ bool array::operator==(array i)
    }
 }
 
+void array::resize(int i)
+{
+    if (i < 0) {
+        std::cout << "Index is out of range" << std::endl;
+	    return;
+    }
+    int *new_arr = new int[i];
+    if (i >= size) {
+	    for (int j = size; j < i; j++) {
+		    new_arr[j] = 0;
+	    }
+	    for(int j = 0; j < size; j++) {
+		    new_arr[j] = arr[j];
+	    }
+    }
+    else {
+	    for(int j = 0; j < i; j++) {
+		    new_arr[j] = arr[j];
+	    }
+    }
+    size = i;
+    delete [] arr;
+    arr = new_arr;
+
+}
+
 void array::push_back(int v)
 {
     resize(++size);
@@ -116,16 +117,28 @@ void array::pop_back()
     resize(--size);
 }
 
-void array::shift(int p, int c, int d)
+int array::capacity()
+{
+    int size1 = size;
+    double n = log2(size);
+        if (n - int(n) == 0) {
+            size1 = pow(2,n);
+        } else {
+            ++n;
+            size1 = pow(2,int(n));
+        }
+    return size1;
+}
+
+void array::shift(int p, int d)
 {
     if (1 == d) {
-        for (int i = size - 1; i > p + 1; --i) {
-            arr[i] = arr[i - c];
+        for (int i = size - 1; i > p - 1; ++i) {
+            arr[i] = arr[i - 1];
         }
     } else if (0 == d) {
-	arr[p -1] = 0;
-        for (int i = p; i < size - 1; ++i) {
-            arr[i] = arr[i -1];
+	     for (int i = p; i < size; ++i) {
+            arr[i] = arr[i + 1];
         }
     }
 }
@@ -144,18 +157,18 @@ void array::empty()const
    }
 }
 
-void array::insert(int p, int c)
+void array::insert(int p)
 {
-    resize(size + c -1);
-    shift(p, c, 0);
-    std::cout <<"Insert your " << c <<" number\n";
-    for (int i = p; i < p + c ; ++i) {
+    resize(size + 1);
+    shift(p, 0);
+    std::cout <<"Insert your number\n";
+    for (int i = p; i < p + 1; ++i) {
         std::cin >> arr[i];
     }
 }
 
-void array::erase(int p, int c)
+void array::erase(int p)
 {
-   shift(p, c, 1);
-   resize(size - c);
+   shift(p, 1);
+   resize(size - 1);
 }

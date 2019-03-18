@@ -11,7 +11,7 @@ private:
 	int* arr;
 	int size;
 public:
-        void shift(int, int, int);
+        void shift(int, int);
 
 
 	array() { arr = nullptr; size = 0; }
@@ -29,13 +29,14 @@ public:
 	array& operator= (const array& p);
 	bool operator== (array i);
         
-        int array_size()const;
-        void resize(int i);
+    int array_size()const;
+    void resize(int i);
+    int capacity();
 	
 	void empty()const;
 
-	void insert(int p, int c = 1);
-	void erase(int p, int c);
+	void insert(int p);
+	void erase(int p);
 
 	void push_back(int);
 	void pop_back();
