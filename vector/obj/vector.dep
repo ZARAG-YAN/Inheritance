@@ -1,0 +1,1 @@
+obj/vector.dep obj/vector.o: src/vector.cpp inc/vector.hpp

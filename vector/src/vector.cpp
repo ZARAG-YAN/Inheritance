@@ -4,6 +4,8 @@
 #include <assert.h>
 #include <cstdlib>
 
+template <typename T>
+
 vector::vector()
 {
   arr = nullptr;
@@ -11,20 +13,20 @@ vector::vector()
   m_capacity = 8;
 }
 
-vector::vector(int s, int v = 0)
+vector::vector(int s, T v = 0)
  : arr(nullptr)
  , m_size(s)
 {  
     m_capacity = 8;
     if (m_size > m_capacity) {
         capacity(m_size);
-        arr = new int[m_capacity];
+        arr = new T[m_capacity];
         assert(arr);
         for (int i = 0; i < m_size; ++i) {
             arr[i] = v;
         }
     } else {
-        arr = new int[m_capacity];
+        arr = new T[m_capacity];
         assert(arr);
         for (int i = 0; i < m_size; ++i) {
             arr[i] = v;
@@ -36,7 +38,7 @@ vector::vector(const vector& o)
 {
     m_capacity = o.m_capacity;
     m_size = o.m_size;
-    arr = new int[m_capacity];
+    arr = new T[m_capacity];
     assert(arr);
     for (int i = 0; i < m_size; ++i) {
         arr[i] = o.arr[i];
@@ -67,17 +69,17 @@ int vector:: get_capacity() const
     return m_capacity; 
 }
 
-int& vector::operator[] (int i)
+T& vector::operator[] (int i)
 {
     return arr[i];
 }
 
-const int& vector::operator[] (int i) const 
+const T& vector::operator[] (int i) const 
 {
     return arr[i]; 
 }
 
-int& vector::at(int i)
+T& vector::at(int i)
 {
     if (i < 0 || i > m_size) {
     throw std::out_of_range("Index is out of range");
@@ -93,7 +95,7 @@ vector& vector:: operator= (const vector& o)
         delete [] arr;
         this -> m_size = o.m_size;
 	this -> m_capacity = o.m_capacity;
-        this -> arr = new int[this -> m_size];
+        this -> arr = new T[this -> m_size];
         for (int i = 0; i < m_size; i++) {
             this -> arr[i] = o.arr[i];
         }
@@ -119,7 +121,7 @@ void vector::clear()
     if (empty()) {
         return;
     } else {
-        int* clear_arr = new int[m_capacity];
+        T* clear_arr = new T[m_capacity];
         assert(clear_arr);
         delete [] arr;
         arr = clear_arr;
@@ -143,10 +145,10 @@ void vector::resize(int i)
         std::cout << std::endl;
         return;
     }   
-    int *new_arr = new int[m_capacity];
+    T *new_arr = new T[m_capacity];
     if (i >= m_capacity) {
         capacity(i);
-        int *new_arr = new int[m_capacity];
+        T *new_arr = new T[m_capacity];
         for (int j = m_size; j < i; j++) {
             new_arr[j] = 0;
         }
@@ -170,7 +172,7 @@ void vector::resize(int i)
     arr = new_arr;
 }
 
-void vector::insert(int p, int v)
+void vector::insert(int p, const T v)
 {
     resize(m_size + 1); 
     shift(p, 0); 
@@ -186,7 +188,7 @@ void vector::erase(int p)
 }
 
 
-void vector::push_back(int v)
+void vector::push_back(const T v)
 {
     resize(++m_size);
     arr[m_size - 1] = v;
@@ -223,6 +225,4 @@ void vector::shift(int p, int d)
         }
     }   
 }
-
-
 
