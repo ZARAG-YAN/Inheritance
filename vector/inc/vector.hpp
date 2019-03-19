@@ -1,39 +1,58 @@
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include <iostream>
 #include <assert.h>
+//template <class T>
 
-vector::vector()
- : arr(nullptr)
- , m_size(0)
- , m_capacity(8)
+/*
+ * @class vector to create vector.
+ * */
+class vector
 {
-}
+    private:
+        /*
+         * @param arr - for array
+         * @param m_size for vector size.
+         * @param m_capacity for vector capacity.
+         * */
+        int* arr;
+        int m_size;
+        int m_capacity;
 
+        void shift(int p, int d);
+        int capacity(int s);
 
-vector::vector(int s, int v = 0);
- : m_size(s)
- , 
+    public:
+        /*
+         * @fn vector
+         * @brief vector class constructor.
+         * */
 
+        vector();
+        vector(int s, int v);
+        vector(const vector& o);
+        ~vector();
 
+        void print_vector() const;
+        int get_size() const;
+        int get_capacity() const;
 
-    vector(const vector& o);
-    ~vector();i
+        int& operator[] (int i);
+        const int& operator[] (int i) const;
+        int& at(int i);
 
-    void print_vector() const;
-    int get_size() const { return m_size; }
+        vector& operator= (const vector& o);
+        bool operator== (vector o);
 
-    int& operator[] (int i);
-    const int& operator[] (int i) const { return arr[i]; }
-    int& at(int i);
+        void clear();
+        bool empty()const;
 
-    vector& operator= (const vector& o);
-    bool operator== (vector o);
+        void resize(int i);
+        void insert(int p, int v);
+        void erase(int p);
 
-    void resize(int i);
-
-    bool empty()const;
-
-    void insert(int p);
-    void erase(int p);
-
-    void push_back(int);
-    int pop_back();
+        void push_back(int);
+        void pop_back();
+};
+#endif // ARRAY_H

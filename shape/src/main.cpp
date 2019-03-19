@@ -10,7 +10,7 @@ int main()
    std::cout<<"\t***WELCOME TO SHAPE***\n";
    std::cout <<"\nPlease input Rectangle dimentions >>> \n"<<"Widht: ";
    std::cin >> w;
-   std::cout <<"Height: ";
+   std::cout <<"\nHeight: ";
    std::cin >> h;
    shape* theArray[2];
    theArray[0] = new rectangle(w, h, "ABCD", "RED");

@@ -29,13 +29,13 @@ public:
 	array& operator= (const array& p);
 	bool operator== (array i);
         
-    int array_size()const;
-    void resize(int i);
-    int capacity();
+        int array_size()const;
+        void resize(int i);
+        int capacity();
 	
 	void empty()const;
 
-	void insert(int p);
+	void insert(int p, int v);
 	void erase(int p);
 
 	void push_back(int);
