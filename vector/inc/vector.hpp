@@ -32,7 +32,7 @@ class vector
          * */
 
         vector();
-        vector(int , int);
+        vector(int , T);
         vector(const vector<T>&);
         ~vector();
 
@@ -51,10 +51,10 @@ class vector
         bool empty()const;
 
         void resize(int);
-        void insert(int, int);
+        void insert(int, const T);
         void erase(int);
 
-        void push_back(int);
+        void push_back(const T);
         void pop_back();
 };
 #endif // ARRAY_H

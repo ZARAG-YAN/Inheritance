@@ -1,11 +1,11 @@
-#include <iostream>
 #include "vector.hpp"
+#include <iostream>
 #include <math.h>
 #include <assert.h>
 #include <cstdlib>
 
 //constructors
-template <typename T>
+template <class T>
 vector<T>::vector()
 {
   arr = nullptr;
@@ -13,11 +13,12 @@ vector<T>::vector()
   m_capacity = 8;
 }
 
-template <typename T>
-vector<T>::vector(int s, T v = 0)
+template <class T>
+vector<T>::vector(int s, T v )
  : arr(nullptr)
  , m_size(s)
 {
+    v = 0;
     m_capacity = 8;
     if (m_size > m_capacity) {
         capacity(m_size);
@@ -35,7 +36,7 @@ vector<T>::vector(int s, T v = 0)
     }
 }
 
-template <typename T>
+template <class T>
 vector<T>::vector(const vector<T>& o)
 {
     m_capacity = o.m_capacity;
@@ -47,7 +48,7 @@ vector<T>::vector(const vector<T>& o)
     }
 }
 
-template <typename T>
+template <class T>
 vector<T>::~vector()
 {
     delete[] arr;
@@ -55,7 +56,7 @@ vector<T>::~vector()
 }
 
 //other methods
-template <typename T>
+template <class T>
 void vector<T>::print_vector() const
 {
     for (int i = 0; i < m_size; ++i) {
@@ -64,32 +65,32 @@ void vector<T>::print_vector() const
     std::cout << std::endl;
 }
 
-template <typename T>
+template <class T>
 int vector<T>:: get_size() const
 {
     return m_size;
 }
 
-template <typename T>
+template <class T>
 int vector<T>:: get_capacity() const
 {
     return m_capacity;
 }
 
 //operators
-template <typename T>
+template <class T>
 T& vector<T>::operator[] (int i)
 {
     return arr[i];
 }
 
-template <typename T>
+template <class T>
 const T& vector<T>::operator[] (int i) const
 {
     return arr[i];
 }
 
-template <typename T>
+template <class T>
 T& vector<T>::at(int i)
 {
     if (i < 0 || i > m_size) {
@@ -98,7 +99,7 @@ T& vector<T>::at(int i)
     return arr[i];
 }
 
-template <typename T>
+template <class T>
 std::ostream& operator<< (std::ostream& out, const vector<T>& vec)
 {
     for (int i = 0; i < vec.size(); ++i) {
@@ -107,8 +108,8 @@ std::ostream& operator<< (std::ostream& out, const vector<T>& vec)
     return out;
 }
 
-template <typename T>
-vector<T>& vector:: operator= (const vector<T>& o)
+template <class T>
+vector<T>& vector<T>:: operator= (const vector<T>& o)
 {
    if (&o == this) {
         return *this;
@@ -124,7 +125,7 @@ vector<T>& vector:: operator= (const vector<T>& o)
     }
 }
 
-template <typename T>
+template <class T>
 bool vector<T>::operator== (vector<T> o)
 {
     if (m_size != o.m_size) {
@@ -139,7 +140,7 @@ bool vector<T>::operator== (vector<T> o)
 }
 
 //other methods
-template <typename T>
+template <class T>
 void vector<T>::clear()
 {
     if (empty()) {
@@ -152,7 +153,7 @@ void vector<T>::clear()
     }
 }
 
-template <typename T>
+template <class T>
 bool vector<T>:: empty() const
 {
     if (0 == m_size) {
@@ -163,7 +164,7 @@ bool vector<T>:: empty() const
 }
 
 
-template <typename T>
+template <class T>
 void vector<T>::resize(int i)
 {
     if (i < 0) {
@@ -198,7 +199,7 @@ void vector<T>::resize(int i)
     arr = new_arr;
 }
 //insertion and deleteion
-template <typename T>
+template <class T>
 void vector<T>::insert(int p, const T v)
 {
     resize(m_size + 1);
@@ -208,7 +209,7 @@ void vector<T>::insert(int p, const T v)
     }
 }
 
-template <typename T>
+template <class T>
 void vector<T>::erase(int p)
 {
    shift(p, 1);
@@ -216,14 +217,14 @@ void vector<T>::erase(int p)
 }
 
 
-template <typename T>
+template <class T>
 void vector<T>::push_back(const T v)
 {
     resize(++m_size);
     arr[m_size - 1] = v;
 }
 
-template <typename T>
+template <class T>
 void vector<T>:: pop_back()
 {
     assert(m_size = 0);
@@ -231,7 +232,7 @@ void vector<T>:: pop_back()
 }
 
 //private functions
-template <typename T>
+template <class T>
 int vector<T>::capacity(int s)
 {
     double n = log2(s);
@@ -244,7 +245,7 @@ int vector<T>::capacity(int s)
     return m_capacity;
 }
 
-template <typename T>
+template <class T>
 void vector<T>::shift(int p, int d)
 {
     if (1 == d) {
