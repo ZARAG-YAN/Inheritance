@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <cstdlib>
 
+//constructors
 template <typename T>
 vector<T>::vector()
 {
@@ -35,7 +36,7 @@ vector<T>::vector(int s, T v = 0)
 }
 
 template <typename T>
-vector<T>::vector(const vector& o)
+vector<T>::vector(const vector<T>& o)
 {
     m_capacity = o.m_capacity;
     m_size = o.m_size;
@@ -53,6 +54,7 @@ vector<T>::~vector()
     arr = nullptr;
 }
 
+//other methods
 template <typename T>
 void vector<T>::print_vector() const
 {
@@ -74,6 +76,7 @@ int vector<T>:: get_capacity() const
     return m_capacity;
 }
 
+//operators
 template <typename T>
 T& vector<T>::operator[] (int i)
 {
@@ -96,16 +99,16 @@ T& vector<T>::at(int i)
 }
 
 template <typename T>
-ostream& operator<< (ostream& out, const vector<T>& vec);
+std::ostream& operator<< (std::ostream& out, const vector<T>& vec)
 {
-    for (int i = 0; i < m_size; ++i) {
+    for (int i = 0; i < vec.size(); ++i) {
     out << "[" << i << "]"<< vec[i] << std::endl;
     }
     return out;
 }
 
 template <typename T>
-vector<T>& vector:: operator= (const vector& o)
+vector<T>& vector:: operator= (const vector<T>& o)
 {
    if (&o == this) {
         return *this;
@@ -122,7 +125,7 @@ vector<T>& vector:: operator= (const vector& o)
 }
 
 template <typename T>
-bool vector<T>::operator== (vector o)
+bool vector<T>::operator== (vector<T> o)
 {
     if (m_size != o.m_size) {
         return false;
@@ -135,6 +138,7 @@ bool vector<T>::operator== (vector o)
     } return true;
 }
 
+//other methods
 template <typename T>
 void vector<T>::clear()
 {
@@ -193,7 +197,7 @@ void vector<T>::resize(int i)
     delete [] arr;
     arr = new_arr;
 }
-
+//insertion and deleteion
 template <typename T>
 void vector<T>::insert(int p, const T v)
 {
