@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <assert.h>
-//template <class T>
 
+template <class T>
 /*
  * @class vector to create vector.
  * */
@@ -41,6 +41,7 @@ class vector
         int& operator[] (int i);
         const int& operator[] (int i) const;
         int& at(int i);
+        ostream& operator<< (ostream& out, const vector<T>& vec);
 
         vector& operator= (const vector& o);
         bool operator== (vector o);

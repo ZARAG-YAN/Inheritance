@@ -17,7 +17,13 @@ ostream& operator<< (ostream& os, const vetor<T>& v)
 int main()
 {
     vector<int> b(4,0);
-    std::cout <<"push-back\n";
+    /*vector<int> c;
+    std::cout <<"c \n";
+    for (int i = 0; i < 5; ++i) {
+        c.push_back();
+    }
+    std::cout << c;*/
+    std::cout <<"b \npush-back\n";
     for (int i = 0; i < 9; ++i) {
         b.push_back(i);
     }

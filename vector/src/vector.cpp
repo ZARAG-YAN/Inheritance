@@ -5,18 +5,18 @@
 #include <cstdlib>
 
 template <typename T>
-
-vector::vector()
+vector<T>::vector()
 {
   arr = nullptr;
   m_size = 0;
   m_capacity = 8;
 }
 
-vector::vector(int s, T v = 0)
+template <typename T>
+vector<T>::vector(int s, T v = 0)
  : arr(nullptr)
  , m_size(s)
-{  
+{
     m_capacity = 8;
     if (m_size > m_capacity) {
         capacity(m_size);
@@ -34,7 +34,8 @@ vector::vector(int s, T v = 0)
     }
 }
 
-vector::vector(const vector& o)
+template <typename T>
+vector<T>::vector(const vector& o)
 {
     m_capacity = o.m_capacity;
     m_size = o.m_size;
@@ -45,13 +46,15 @@ vector::vector(const vector& o)
     }
 }
 
-vector::~vector()
+template <typename T>
+vector<T>::~vector()
 {
     delete[] arr;
     arr = nullptr;
 }
 
-void vector::print_vector() const
+template <typename T>
+void vector<T>::print_vector() const
 {
     for (int i = 0; i < m_size; ++i) {
         std::cout << arr[i] <<" ";
@@ -59,27 +62,32 @@ void vector::print_vector() const
     std::cout << std::endl;
 }
 
-int vector:: get_size() const
+template <typename T>
+int vector<T>:: get_size() const
 {
-    return m_size; 
+    return m_size;
 }
 
-int vector:: get_capacity() const
+template <typename T>
+int vector<T>:: get_capacity() const
 {
-    return m_capacity; 
+    return m_capacity;
 }
 
-T& vector::operator[] (int i)
+template <typename T>
+T& vector<T>::operator[] (int i)
 {
     return arr[i];
 }
 
-const T& vector::operator[] (int i) const 
+template <typename T>
+const T& vector<T>::operator[] (int i) const
 {
-    return arr[i]; 
+    return arr[i];
 }
 
-T& vector::at(int i)
+template <typename T>
+T& vector<T>::at(int i)
 {
     if (i < 0 || i > m_size) {
     throw std::out_of_range("Index is out of range");
@@ -87,23 +95,34 @@ T& vector::at(int i)
     return arr[i];
 }
 
-vector& vector:: operator= (const vector& o)
+template <typename T>
+ostream& operator<< (ostream& out, const vector<T>& vec);
+{
+    for (int i = 0; i < m_size; ++i) {
+    out << "[" << i << "]"<< vec[i] << std::endl;
+    }
+    return out;
+}
+
+template <typename T>
+vector<T>& vector:: operator= (const vector& o)
 {
    if (&o == this) {
         return *this;
     } else {
         delete [] arr;
         this -> m_size = o.m_size;
-	this -> m_capacity = o.m_capacity;
+	    this -> m_capacity = o.m_capacity;
         this -> arr = new T[this -> m_size];
         for (int i = 0; i < m_size; i++) {
             this -> arr[i] = o.arr[i];
         }
         return *this;
-    }  
+    }
 }
-    
-bool vector::operator== (vector o)
+
+template <typename T>
+bool vector<T>::operator== (vector o)
 {
     if (m_size != o.m_size) {
         return false;
@@ -111,12 +130,13 @@ bool vector::operator== (vector o)
         for (int i = 0; i < m_size; ++i) {
             if (arr[i] != o.arr[i]) {
                 return false;
-            } 
+            }
         }
     } return true;
 }
 
-void vector::clear()
+template <typename T>
+void vector<T>::clear()
 {
     if (empty()) {
         return;
@@ -128,7 +148,8 @@ void vector::clear()
     }
 }
 
-bool vector:: empty() const
+template <typename T>
+bool vector<T>:: empty() const
 {
     if (0 == m_size) {
         return true;
@@ -138,13 +159,14 @@ bool vector:: empty() const
 }
 
 
-void vector::resize(int i)
+template <typename T>
+void vector<T>::resize(int i)
 {
     if (i < 0) {
         throw std::out_of_range("Index is out of range");
         std::cout << std::endl;
         return;
-    }   
+    }
     T *new_arr = new T[m_capacity];
     if (i >= m_capacity) {
         capacity(i);
@@ -166,42 +188,47 @@ void vector::resize(int i)
                 for (int j = 0; j < i; j++) {
                    new_arr[j] = arr[j];
                 }
-           }     
+           }
     m_size = i;
     delete [] arr;
     arr = new_arr;
 }
 
-void vector::insert(int p, const T v)
+template <typename T>
+void vector<T>::insert(int p, const T v)
 {
-    resize(m_size + 1); 
-    shift(p, 0); 
+    resize(m_size + 1);
+    shift(p, 0);
     for (int i = p; i < p + 1; ++i) {
         arr[i] = v;
-    }   
+    }
 }
 
-void vector::erase(int p)
+template <typename T>
+void vector<T>::erase(int p)
 {
-   shift(p, 1); 
-   resize(m_size - 1); 
+   shift(p, 1);
+   resize(m_size - 1);
 }
 
 
-void vector::push_back(const T v)
+template <typename T>
+void vector<T>::push_back(const T v)
 {
     resize(++m_size);
     arr[m_size - 1] = v;
 }
 
-void vector:: pop_back()
+template <typename T>
+void vector<T>:: pop_back()
 {
     assert(m_size = 0);
     --m_size;
 }
 
 //private functions
-int vector::capacity(int s)
+template <typename T>
+int vector<T>::capacity(int s)
 {
     double n = log2(s);
         if (n - int(n) == 0) {
@@ -213,16 +240,17 @@ int vector::capacity(int s)
     return m_capacity;
 }
 
-void vector::shift(int p, int d)
+template <typename T>
+void vector<T>::shift(int p, int d)
 {
     if (1 == d) {
         for (int i = m_size - 1; i > p - 1; ++i) {
-            arr[i] = arr[i - 1]; 
-        }   
+            arr[i] = arr[i - 1];
+        }
     } else if (0 == d) {
              for (int i = p; i < m_size; ++i) {
-            arr[i] = arr[i + 1]; 
+            arr[i] = arr[i + 1];
         }
-    }   
+    }
 }
 
